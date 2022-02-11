@@ -19,6 +19,7 @@ class TextInputField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
+      textInputAction: TextInputAction.next,
       decoration: InputDecoration(
         labelText: label,
         prefixIcon: Icon(icon),
