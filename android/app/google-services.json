@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1085059236957",
+    "project_id": "uritok",
+    "storage_bucket": "uritok.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1085059236957:android:1c584a3ba9d983c7ce79b4",
+        "android_client_info": {
+          "package_name": "com.example.tiktok_clone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1085059236957-dn1rojo7ak844th8kds27rm2oq4i8fur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBE-SKDl5ZsoxCvW6s8MuEB7Ath91PKrDk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1085059236957-dn1rojo7ak844th8kds27rm2oq4i8fur.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
