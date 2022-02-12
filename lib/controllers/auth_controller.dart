@@ -23,6 +23,17 @@ class AuthController extends GetxController {
     Get.snackbar('Profile picture', 'Your profile picture has been updated');
   }
 
+  // Upload to Firebase Storage
+  Future<String> _uploadToStorage(File image) async {
+    Reference ref = firebaseStorage
+        .ref()
+        .child('profilePics/${firebaseAuth.currentUser!.uid}');
+    UploadTask uploadTask = ref.putFile(image);
+    TaskSnapshot snap = await uploadTask;
+    String url = await snap.ref.getDownloadURL();
+    return url;
+  }
+
   // Register user
   void registerUser(
       String username, String email, String password, File? image) async {
@@ -56,14 +67,16 @@ class AuthController extends GetxController {
     }
   }
 
-  // Upload to Firebase Storage
-  Future<String> _uploadToStorage(File image) async {
-    Reference ref = firebaseStorage
-        .ref()
-        .child('profilePics/${firebaseAuth.currentUser!.uid}');
-    UploadTask uploadTask = ref.putFile(image);
-    TaskSnapshot snap = await uploadTask;
-    String url = await snap.ref.getDownloadURL();
-    return url;
+  void loginUser(String email, String password) async {
+    try {
+      if (email.isNotEmpty && password.isNotEmpty) {
+        Get.snackbar('Error logging in', 'Please enter all the fields');
+        return;
+      }
+      await firebaseAuth.signInWithEmailAndPassword(
+          email: email, password: password);
+    } catch (e) {
+      Get.snackbar('Error logging in', e.toString());
+    }
   }
 }
