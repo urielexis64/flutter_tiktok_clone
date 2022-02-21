@@ -16,11 +16,11 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
   @override
   void initState() {
     super.initState();
-
     _controller = VideoPlayerController.network(widget.videoUrl)
       ..initialize().then((value) {
         _controller.play();
         _controller.setVolume(1);
+        _controller.setLooping(true);
       });
   }
 
@@ -33,11 +33,18 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Container(
-      width: size.width,
-      height: size.height,
-      decoration: const BoxDecoration(color: Colors.black),
-      child: VideoPlayer(_controller),
+    return GestureDetector(
+      onTap: () => _controller.value.isPlaying
+          ? _controller.pause()
+          : _controller.play(),
+      child: SizedBox(
+        width: size.width,
+        height: size.height,
+        child: Center(
+            child: AspectRatio(
+                aspectRatio: _controller.value.aspectRatio,
+                child: VideoPlayer(_controller))),
+      ),
     );
   }
 }
