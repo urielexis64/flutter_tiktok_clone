@@ -40,10 +40,7 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
       child: SizedBox(
         width: size.width,
         height: size.height,
-        child: Center(
-            child: AspectRatio(
-                aspectRatio: _controller.value.aspectRatio,
-                child: VideoPlayer(_controller))),
+        child: Center(child: VideoPlayer(_controller)),
       ),
     );
   }
