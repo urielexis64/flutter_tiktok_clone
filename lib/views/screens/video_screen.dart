@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tiktok_clone/constants.dart';
 import 'package:tiktok_clone/controllers/video_controller.dart';
+import 'package:tiktok_clone/views/screens/comment_screen.dart';
 import 'package:tiktok_clone/views/widgets/circle_animation.dart';
 import 'package:tiktok_clone/views/widgets/video_player_item.dart';
 
@@ -68,7 +69,8 @@ class _VideoScreenState extends State<VideoScreen>
                               builder: (_, value, __) {
                                 return Opacity(
                                     opacity: value,
-                                    child: Icon(Icons.favorite, size: 70));
+                                    child:
+                                        const Icon(Icons.favorite, size: 70));
                               },
                               valueListenable: _opacity,
                             )))),
@@ -141,7 +143,11 @@ class _VideoScreenState extends State<VideoScreen>
                                 ]),
                                 Column(children: [
                                   InkWell(
-                                      onTap: () {},
+                                      onTap: () => Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (_) =>
+                                                  CommentScreen(id: video.id))),
                                       customBorder: const CircleBorder(),
                                       child: const Padding(
                                         padding: EdgeInsets.all(4.0),
